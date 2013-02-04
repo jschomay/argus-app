@@ -3,7 +3,7 @@ Ext.define('ArgusApp.view.Main', {
     xtype: 'main',
     requires: [
         'Ext.TitleBar',
-        'Ext.Video'
+        // 'Ext.Video'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -19,7 +19,7 @@ Ext.define('ArgusApp.view.Main', {
                 items: {
                     docked: 'top',
                     xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
+                    title: 'Welcome to Argus Self Storage'
                 },
 
                 html: [
@@ -29,21 +29,54 @@ Ext.define('ArgusApp.view.Main', {
                 ].join("")
             },
             {
-                title: 'Get Started',
-                iconCls: 'action',
-
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
+                title: 'Search Properties',
+                iconCls: 'search2',
+                xtype: 'nestedlist',
+                displayField: 'title',
+                store: {
+                    type: 'tree',
+                    fields: [
+                        'title', 'link', 'author', 'contentSnippet', 'content',
+                        {name: 'leaf', defaultValue: true}
+                    ],
+                    root:  {
+                        leaf: false
                     },
-                    {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
+                    proxy: {
+                        type: 'jsonp',
+                        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.feedburner.com/SenchaBlog',
+                        reader: {
+                            type: 'json',
+                            rootProperty: 'responseData.feed.entries'
+                        }
                     }
-                ]
+                },
+                detailCard: {
+                    xtype: 'panel',
+                    scrollable: true,
+                    styleHtmlContent: true
+                },
+                listeners: {
+                    itemtap: function(nestedList, list, index, element, post) {
+                        this.getDetailCard().setHtml(post.get('content'));
+                    }
+                }
+            },
+            {
+                title: "Find a Broker",
+                iconCls: 'address-book' //or user_business
+            },
+            {
+                title: "About",
+                iconCls: 'info2'
+            },
+            {
+                title: "Other?",
+                iconCls: 'help'
+            },
+            {
+                title: "Contact",
+                iconCls: 'phone1'
             }
         ]
     }
