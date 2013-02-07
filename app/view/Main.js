@@ -2,8 +2,7 @@ Ext.define('ArgusApp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
-        'Ext.TitleBar',
-        // 'Ext.Video'
+        'Ext.TitleBar'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -76,7 +75,40 @@ Ext.define('ArgusApp.view.Main', {
             },
             {
                 title: "Contact",
-                iconCls: 'phone1'
+                iconCls: 'phone1',
+                xtype: 'formpanel',
+                url: 'contact.php',
+                layout: 'vbox',
+
+                items: [
+                    {
+                        xtype: 'fieldset',
+                        title: 'Contact Us',
+                        instructions: '(email address is optional)',
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                label: 'Name'
+                            },
+                            {
+                                xtype: 'emailfield',
+                                label: 'Email'
+                            },
+                            {
+                                xtype: 'textareafield',
+                                label: 'Message'
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Send',
+                        ui: 'confirm',
+                        handler: function() {
+                            this.up('formpanel').submit();
+                        }
+                    }
+                ]
             }
         ]
     }
