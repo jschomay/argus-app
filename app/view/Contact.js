@@ -1,21 +1,43 @@
 Ext.define('ArgusApp.view.Contact', {
-    extend: 'Ext.Toolbar',
+    extend: 'Ext.form.Panel',
     xtype : 'contact',
-    requires: ['Ext.field.Search'],
 
     config: {
-        ui: 'searchbar',
+        url: 'put-contact-here.php',
         layout: 'vbox',
-        cls: 'big',
 
         items: [
             {
-                xtype: 'title',
-                title: 'Twitter Search'
+                docked: 'top',
+                xtype: 'titlebar',
+                title: 'Contact Us'
             },
             {
-                xtype: 'searchfield',
-                placeHolder: 'Search...'
+                xtype: 'fieldset',
+                instructions: '(email address is optional)',
+                items: [
+                    {
+                        xtype: 'textfield',
+                        label: 'Name'
+                    },
+                    {
+                        xtype: 'emailfield',
+                        label: 'Email'
+                    },
+                    {
+                        xtype: 'textareafield',
+                        label: 'Message'
+                    }
+                ]
+            },
+            {
+                xtype: 'button',
+                text: 'Send',
+                ui: 'confirm',
+                handler: function() {
+                    this.up('formpanel').submit();
+                    Ext.Msg.alert("Your message has been sent.");
+                }
             }
         ]
     }

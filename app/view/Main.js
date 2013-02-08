@@ -35,11 +35,6 @@ Ext.define('ArgusApp.view.Main', {
                 xtype: 'searchProperties'
             },
             {
-                title: "Contact",
-                iconCls: 'phone1',
-                xtype: 'contact'
-            },
-            {
                 title: "Find a Broker",
                 iconCls: 'address-book' //or user_business
             },
@@ -54,40 +49,7 @@ Ext.define('ArgusApp.view.Main', {
             {
                 title: "Contact",
                 iconCls: 'phone1',
-                xtype: 'formpanel',
-                url: 'put-contact-here.php',
-                layout: 'vbox',
-
-                items: [
-                    {
-                        xtype: 'fieldset',
-                        title: 'Contact Us',
-                        instructions: '(email address is optional)',
-                        items: [
-                            {
-                                xtype: 'textfield',
-                                label: 'Name'
-                            },
-                            {
-                                xtype: 'emailfield',
-                                label: 'Email'
-                            },
-                            {
-                                xtype: 'textareafield',
-                                label: 'Message'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'button',
-                        text: 'Send',
-                        ui: 'confirm',
-                        handler: function() {
-                            this.up('formpanel').submit();
-                            Ext.Msg.alert("Your message has been sent.");
-                        }
-                    }
-                ]
+                xtype: 'contact'
             }
         ]
     }
