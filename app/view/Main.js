@@ -2,11 +2,13 @@ Ext.define('ArgusApp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
-        'Ext.TitleBar'
+        'Ext.TitleBar',
+        'ArgusApp.view.SearchProperties',
+        'ArgusApp.view.Contact',
+        'Ext.MessageBox'
     ],
     config: {
         tabBarPosition: 'bottom',
-
         items: [
             {
                 title: 'Welcome',
@@ -30,36 +32,12 @@ Ext.define('ArgusApp.view.Main', {
             {
                 title: 'Search Properties',
                 iconCls: 'search2',
-                xtype: 'nestedlist',
-                displayField: 'title',
-                store: {
-                    type: 'tree',
-                    fields: [
-                        'title', 'link', 'author', 'contentSnippet', 'content',
-                        {name: 'leaf', defaultValue: true}
-                    ],
-                    root:  {
-                        leaf: false
-                    },
-                    proxy: {
-                        type: 'jsonp',
-                        url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.feedburner.com/SenchaBlog',
-                        reader: {
-                            type: 'json',
-                            rootProperty: 'responseData.feed.entries'
-                        }
-                    }
-                },
-                detailCard: {
-                    xtype: 'panel',
-                    scrollable: true,
-                    styleHtmlContent: true
-                },
-                listeners: {
-                    itemtap: function(nestedList, list, index, element, post) {
-                        this.getDetailCard().setHtml(post.get('content'));
-                    }
-                }
+                xtype: 'searchProperties'
+            },
+            {
+                title: "Contact",
+                iconCls: 'phone1',
+                xtype: 'contact'
             },
             {
                 title: "Find a Broker",
@@ -77,7 +55,7 @@ Ext.define('ArgusApp.view.Main', {
                 title: "Contact",
                 iconCls: 'phone1',
                 xtype: 'formpanel',
-                url: 'contact.php',
+                url: 'put-contact-here.php',
                 layout: 'vbox',
 
                 items: [
@@ -106,6 +84,7 @@ Ext.define('ArgusApp.view.Main', {
                         ui: 'confirm',
                         handler: function() {
                             this.up('formpanel').submit();
+                            Ext.Msg.alert("Your message has been sent.");
                         }
                     }
                 ]
