@@ -1,15 +1,20 @@
 Ext.define('ArgusApp.view.SearchProperties', {
-    extend: 'Ext.dataview.NestedList',
+    extend: 'Ext.List',
     xtype: "searchProperties",
+    requires: [
+        'Ext.data.Store',
+        'Ext.data.proxy.JsonP'
+    ],
     config: {
-        displayField: 'title',
+        onItemDisclosure: true,
         store: {
-            type: 'tree',
+            autoLoad: true,
             fields: ['title', 'link', 'author', 'contentSnippet', 'content',
-            {
-                name: 'leaf',
-                defaultValue: true
-            }],
+                {
+                    name: 'leaf',
+                    defaultValue: true
+                }
+            ],
             root: {
                 leaf: false
             },
@@ -22,14 +27,17 @@ Ext.define('ArgusApp.view.SearchProperties', {
                 }
             }
         },
+        itemTpl: '<b>{title}</b><br>{author}',
         detailCard: {
             xtype: 'panel',
             scrollable: true,
-            styleHtmlContent: true
+            styleHtmlContent: true,
+            html: "detail card placeholder"
         },
         listeners: {
             itemtap: function(nestedList, list, index, element, post) {
-                this.getDetailCard().setHtml(post.get('content'));
+                alert('test');
+                // this.getDetailCard().setHtml(post.get('content'));
             }
         }
     }
