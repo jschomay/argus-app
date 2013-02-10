@@ -3,25 +3,22 @@ Ext.define('ArgusApp.controller.Main', {
 
     config: {
         refs: {
-            main: 'main'
+            searchProperties: 'searchProperties'
         },
         control: {
-            'searchProperties': {
-                disclose: 'showDetail',
-                select: 'showDetail'
+            'searchProperties list': {
+                disclose: 'showDetail'
             }
         }
     },
 
     showDetail: function(list, record) {
-        console.log('disclose event from main.controller', this.getMain());
-        this.getMain().items[1].push({
+        console.log('disclose event from main.controller', arguments);
+        this.getSearchProperties().push({
             xtype: 'panel',
-            title: 'detail',
-            html: 'info here'
-            // xtype: 'presidentdetail',
-            // title: record.fullName(),
-            // data: record.getData()
+            title: record.data.title,
+            html: record.data.content,
+            scrollable: true
         });
     }
 
