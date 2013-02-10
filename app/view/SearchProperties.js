@@ -6,7 +6,6 @@ Ext.define('ArgusApp.view.SearchProperties', {
         'Ext.data.proxy.JsonP'
     ],
     config: {
-        onItemDisclosure: true,
         store: {
             autoLoad: true,
             fields: ['title', 'link', 'author', 'contentSnippet', 'content',
@@ -28,15 +27,19 @@ Ext.define('ArgusApp.view.SearchProperties', {
             }
         },
         itemTpl: '<b>{title}</b><br>{author}',
-        detailCard: {
-            xtype: 'panel',
-            scrollable: true,
-            styleHtmlContent: true,
-            html: "detail card placeholder"
-        },
+        // detailCard: {
+        //     xtype: 'panel',
+        //     scrollable: true,
+        //     styleHtmlContent: true,
+        //     html: "detail card placeholder"
+        // },
+        onItemDisclosure: true,
+        // onItemDisclosure: function(){
+        //     console.log("disclosed:", arguments);
+        // },
         listeners: {
-            itemtap: function(nestedList, list, index, element, post) {
-                alert('test');
+            select: function(view, record) {
+                console.log("select", arguments);
                 // this.getDetailCard().setHtml(post.get('content'));
             }
         }
