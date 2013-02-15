@@ -8,6 +8,10 @@ Ext.Loader.setPath({
 Ext.application({
     name: 'ArgusApp',
 
+    viewport: {
+        autoMaximize: true
+    },
+
     requires: [
         'Ext.MessageBox'
     ],

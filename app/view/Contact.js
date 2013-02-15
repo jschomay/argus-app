@@ -2,8 +2,7 @@ Ext.define('ArgusApp.view.Contact', {
     extend: 'Ext.form.Panel',
     requires: [
         'Ext.form.FieldSet',
-        'Ext.field.Email',
-        'Ext.Msg'
+        'Ext.field.Email'
     ],
     xtype : 'contact',
 
@@ -23,11 +22,7 @@ Ext.define('ArgusApp.view.Contact', {
                 callUrl: 'tel:1-800-55-STORE',
                 ui: 'confirm',
                 handler: function(button, event){
-                    Ext.Msg.confirm('Make call', 'Do you really want to place call?', function(res){
-                        if (res == 'yes') {
-                            window.location = button.callUrl;
-                        }
-                    }, this);
+                    window.location = button.callUrl;
                 }
             },
             {

@@ -10,9 +10,10 @@ Ext.define('ArgusApp.view.Broker', {
             {
                 xtype: 'container',
                 title: "Find an Argus Broker",
+                scrollable: true,
                 items: [
                     {
-                        html: ['<br><br><img style="display:block; margin:auto;" src="resources/images/regions.png">',
+                        html: ['<br><br><img style="display:block; margin:auto;width: 100%;" src="resources/images/regions.png">',
                         '<br><p>Argus Broker Affiliates cover nearly 45 markets across the U.S. Please select your region below to view contact and professional information about the Broker Affiliates near you.</p>',
                         '<br><br>'].join("")
                     },
