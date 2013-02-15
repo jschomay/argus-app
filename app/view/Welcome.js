@@ -28,6 +28,7 @@ Ext.define('ArgusApp.view.Welcome', {
                   styleHtmlContent: true
               },
               height: 300,
+              style: 'background: #fff;padding: 10px;border: 1px solid #aaa;',
               items: [
                   {
                       html : ['<div class="listing">',

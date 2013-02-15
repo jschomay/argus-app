@@ -6,6 +6,7 @@ Ext.define('ArgusApp.view.Main', {
         'ArgusApp.view.Welcome',
         'ArgusApp.view.SearchProperties',
         'ArgusApp.view.Broker',
+        'ArgusApp.view.About',
         'ArgusApp.view.Contact',
         'Ext.MessageBox'
     ],
@@ -29,11 +30,8 @@ Ext.define('ArgusApp.view.Main', {
             },
             {
                 title: "About",
-                iconCls: 'info2'
-            },
-            {
-                title: "Other?",
-                iconCls: 'help'
+                iconCls: 'info2',
+                xtype: 'about'
             },
             {
                 title: "Contact",
