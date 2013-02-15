@@ -1,5 +1,9 @@
 Ext.define('ArgusApp.view.Contact', {
     extend: 'Ext.form.Panel',
+    requires: [
+        'Ext.form.FieldSet',
+        'Ext.field.Email'
+    ],
     xtype : 'contact',
 
     config: {

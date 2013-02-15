@@ -32,7 +32,20 @@ Ext.define('ArgusApp.view.SearchProperties', {
                         }
                     }
                 },
-                itemTpl: '<b>{title}</b><br>{author}',
+                itemTpl: ['<div class="listing">',
+                                    '<div class="scroll-image"><img style="float: left;display: block;margin-right: 20px;" src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID=677&amp;imagecode=5" alt="" border="0"></div>',
+                                    '<div class="scroll-content">',
+                                        '<h3> <a href="#" class="specials">Bandon, OR</a></h3>',
+                                        '<div class="scroll-content-section">',
+                                            '<p> $749,000</p>',
+                                            '<p> <a href="#" class="specials">View Property Detail</a> </p>',
+                                        '</div>',
+                                        '<div class="scroll-content-section"><p>19,268 rsf</p>',
+                                            '<p> 141 units </p>',
+                                        '</div>',
+                                    '</div>',
+                                    '<div class="clear"></div>',
+                                '</div>'].join(""),
                 onItemDisclosure: true,
                 select: function(view, record) {
                     console.log("select", arguments);
