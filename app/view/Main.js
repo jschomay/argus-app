@@ -3,11 +3,6 @@ Ext.define('ArgusApp.view.Main', {
     xtype: 'main',
     requires: [
         'Ext.TitleBar',
-        'ArgusApp.view.Welcome',
-        'ArgusApp.view.SearchProperties',
-        'ArgusApp.view.Broker',
-        'ArgusApp.view.About',
-        'ArgusApp.view.Contact',
         'Ext.MessageBox'
     ],
     config: {

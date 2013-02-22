@@ -20,6 +20,12 @@ $active-color: #aaa;
 @include sencha-msgbox;
 
 // Your custom code goes here...
+
+
+// other includes
+@include sencha-loading-spinner;
+
+// logos
 @include pictos-iconmask(user_business);
 @include pictos-iconmask(info2);
 @include pictos-iconmask(help);

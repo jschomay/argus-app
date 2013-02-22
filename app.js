@@ -16,8 +16,18 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main'],
     controllers: ['Main'],
+    views: [
+        'Main',
+        'Welcome',
+        'SearchProperties',
+        'Broker',
+        'About',
+        'Contact'
+    ],
+    stores: [
+        'Properties'
+    ],
 
     icon: {
         '57': 'resources/icons/Icon.png',

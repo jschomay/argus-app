@@ -17,69 +17,105 @@ Ext.define('ArgusApp.view.Welcome', {
           {
               html: [
                   '<img style="display:block; margin:auto;" src="resources/images/logo.png">',
-                  '<h2 style="text-align:center; line-height:100%;">Argus is America\'s Premier Self Storage Brokerage Firm.</h2>',
-                  '<p>The Argus Self Storage Sales Network is the only national network of commercial real estate brokers who specialize in self-storage properties. The network assists buyers and sellers of self-storage real estate by combining the knowledge and expertise of a local broker with the exposure of our national sales and marketing program. Our national broker network has representatives located throughout the United States. These brokers were selected based on their reputation, knowledge and experience in commercial real estate.</p>',
-                  '<h3>Our 3 most recent properties:</h3>'
+                  '<h2 style="text-align:center; line-height:100%;">America\'s Premier Self Storage Brokerage Firm.</h2>',
+                  '<h3>Our newest listings:</h3>'
                   ].join("")
           },
           {
-              xtype: 'carousel',
-              defaults: {
-                  styleHtmlContent: true
-              },
+              xtype: 'rotatingcarousel',
+              styleHtmlContent: true,
+              delay: 5000,
               height: 300,
               style: 'background: #fff;padding: 10px;border: 1px solid #aaa;',
-              items: [
-                  {
-                      html : ['<div class="listing">',
-                          '<div class="scroll-image"><img style="float: left;display: block;margin-right: 20px;" src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID=677&amp;imagecode=5" alt="" border="0"></div>',
-                          '<div class="scroll-content">',
-                              '<h3> <a href="#" class="specials">Bandon, OR</a></h3>',
-                              '<div class="scroll-content-section">',
-                                  '<p> $749,000</p>',
-                                  '<p> <a href="#" class="specials">View Property Detail</a> </p>',
-                              '</div>',
-                              '<div class="scroll-content-section"><p>19,268 rsf</p>',
-                                  '<p> 141 units </p>',
-                              '</div>',
-                          '</div>',
-                          '<div class="clear"></div>',
-                      '</div>'].join("")
-                  },
-                  {
-                      html : ['<div class="listing">',
-                          '<div class="scroll-image"><img style="float: left;display: block;margin-right: 20px;" src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID=677&amp;imagecode=5" alt="" border="0"></div>',
-                          '<div class="scroll-content">',
-                              '<h3> <a href="#" class="specials">Bandon, OR</a></h3>',
-                              '<div class="scroll-content-section">',
-                                  '<p> $749,000</p>',
-                                  '<p> <a href="#" class="specials">View Property Detail</a> </p>',
-                              '</div>',
-                              '<div class="scroll-content-section"><p>19,268 rsf</p>',
-                                  '<p> 141 units </p>',
-                              '</div>',
-                          '</div>',
-                          '<div class="clear"></div>',
-                      '</div>'].join("")
-                  },
-                  {
-                      html : ['<div class="listing">',
-                          '<div class="scroll-image"><img style="float: left;display: block;margin-right: 20px;" src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID=677&amp;imagecode=5" alt="" border="0"></div>',
-                          '<div class="scroll-content">',
-                              '<h3> <a href="#" class="specials">Bandon, OR</a></h3>',
-                              '<div class="scroll-content-section">',
-                                  '<p> $749,000</p>',
-                                  '<p> <a href="#" class="specials">View Property Detail</a> </p>',
-                              '</div>',
-                              '<div class="scroll-content-section"><p>19,268 rsf</p>',
-                                  '<p> 141 units </p>',
-                              '</div>',
-                          '</div>',
-                          '<div class="clear"></div>',
-                      '</div>'].join("")
-                  }
-              ]
+              masked: {
+                  xtype: 'loadmask',
+                  message: 'Loading newest properties'
+              },
+              listeners: {
+                initialize: function() {
+                  console.log("XXXXXXXXXXXXXXX initialized carousel component");
+                  Ext.getStore("Properties").load(function(properties) {
+                  var items = [];
+                  console.log('load store', arguments);
+                  Ext.each(properties, function(property) {
+                      console.log("property pushed", property);
+                      items.push({
+                        xtype: 'panel',
+                        data: property.data,
+                        tpl: 'Property: {State}, {City},{Price}'
+                      });
+                  });
+                  console.log("this:",this);
+                  this.setItems(items);
+                  this.setActiveItem(0);
+                  this.unmask();
+                }, this);
+
+                }
+            }
           }
       ]
+    }
+});
+
+
+Ext.define('Ext.carousel.RotatingCarousel', {
+    extend: 'Ext.carousel.Carousel',
+    alternateClassName: 'Ext.RotatingCarousel',
+    xtype: 'rotatingcarousel',
+    config: {
+        delay: 3000,
+        start: true,
+        listeners: {
+            tap: {
+                fn: function() {
+                    this.pause();
+                },
+                element: 'element'
+            },
+            swipe: {
+                fn: function() {
+                    this.start();
+                },
+                element: 'innerElement'
+            }
+        }
+    },
+    initialize: function() {
+        if(this.config.start) {
+            this.start();
+        }
+    },
+    rotate: function() {
+        if(this.timeout) {
+            clearTimeout(this.timeout);
+        }
+        if(this.getActiveIndex() === this.getMaxItemIndex()) {
+            // this.setActiveItem(0, 'slide');
+            this.animateActiveItem(0, {
+                type: 'slide',
+                direction: 'left'
+            });
+        } else {
+            this.next();
+        }
+        this.timeout = Ext.defer(this.rotate, this.config.delay, this);
+    },
+    start: function(delayStart) {
+        this.timeout = Ext.defer(this.rotate, delayStart || this.config.delay, this);
+    },
+    pause: function(delayStart) {
+        if(this.timeout) {
+            clearTimeout(this.timeout);
+        }
+        if(delayStart) {
+            this.start(delayStart);
+        }
+        return this;
+    },
+    stop: function(delayStart) {
+        this.pause(delayStart);
+        this.setActiveItem(0, 'slide');
+        return this;
     }
 });
