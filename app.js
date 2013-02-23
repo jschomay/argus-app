@@ -13,9 +13,9 @@ Ext.application({
     },
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.TitleBar'
     ],
-
     controllers: ['Main'],
     views: [
         'Main',
@@ -27,6 +27,9 @@ Ext.application({
     ],
     stores: [
         'Properties'
+    ],
+    models: [
+        'Property'
     ],
 
     icon: {

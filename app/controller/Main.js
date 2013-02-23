@@ -4,7 +4,8 @@ Ext.define('ArgusApp.controller.Main', {
     config: {
         refs: {
             searchProperties: 'searchProperties',
-            broker: 'broker'
+            broker: 'broker',
+            main: 'main'
         },
         control: {
             'searchProperties list': {
@@ -13,6 +14,12 @@ Ext.define('ArgusApp.controller.Main', {
             'broker list':{
                 select: 'showBrokerDetail',
                 disclose: 'showBrokerDetail'
+            },
+            'button#showListings': {
+                tap: function() {
+                    console.log(this.getMain());
+                    this.getMain().setActiveItem(1);
+                }
             }
         }
     },

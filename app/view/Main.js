@@ -1,10 +1,7 @@
 Ext.define('ArgusApp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
-    requires: [
-        'Ext.TitleBar',
-        'Ext.MessageBox'
-    ],
+
     config: {
         tabBarPosition: 'bottom',
         items: [

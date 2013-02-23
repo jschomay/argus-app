@@ -18,43 +18,55 @@ Ext.define('ArgusApp.view.Welcome', {
               html: [
                   '<img style="display:block; margin:auto;" src="resources/images/logo.png">',
                   '<h2 style="text-align:center; line-height:100%;">America\'s Premier Self Storage Brokerage Firm.</h2>',
-                  '<h3>Our newest listings:</h3>'
+                  '<h3 style="text-align:center; line-height:100%;">Our newest listings:</h3>'
                   ].join("")
           },
           {
-              xtype: 'rotatingcarousel',
-              styleHtmlContent: true,
-              delay: 5000,
-              height: 300,
-              style: 'background: #fff;padding: 10px;border: 1px solid #aaa;',
-              masked: {
-                  xtype: 'loadmask',
-                  message: 'Loading newest properties'
-              },
-              listeners: {
-                initialize: function() {
-                  var store = Ext.getStore("Properties");
-                  store.load(function() {
-                    var items = [];
-                    store.clearFilter(true);
-                    store.filter('New', '-1' );
-                    console.log("store", store);
-                    // reach inside store to get filtered items instead of reloding it
-                    Ext.each(store.data.items, function(property) {
-                        items.push({
-                          xtype: 'panel',
-                          data: property.data,
-                          tpl: 'Property: {State}, {City},{Price}'
-                        });
-                    });
-                    store.clearFilter(true);
-                    this.setItems(items);
-                    this.setActiveItem(0);
-                    this.unmask();
+            xtype: 'rotatingcarousel',
+            styleHtmlContent: true,
+            delay: 5000,
+            height: 300,
+            style: 'background: #fff;padding: 10px;border: 1px solid #aaa;',
+            masked: {
+                xtype: 'loadmask',
+                message: 'Loading newest properties'
+            },
+            listeners: {
+              initialize: function() {
+                var store = Ext.getStore("Properties");
+                store.load(function() {
+                  var items = [];
+                  store.clearFilter(true);
+                  store.filter('New', '-1' );
+                  console.log("store", store);
+                  // reach inside store to get filtered items instead of reloding it
+                  Ext.each(store.data.items, function(property) {
+                      items.push({
+                        xtype: 'panel',
+                        data: property.data,
+                        tpl: [
+                          '<div class="{New} {Contract} {NewPrice}">',
+                            '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
+                            '{State}, {City}',
+                            'Price: {Price}',
+                          '</div>'
+                        ].join('')
+                      });
+                  });
+                  store.clearFilter(true);
+                  this.setItems(items);
+                  this.setActiveItem(0);
+                  this.unmask();
                 }, this);
-
-                }
+              }
             }
+          },
+          {
+            xtype: 'button',
+            id: 'showListings',
+            text: "See all listings...",
+            margin: 20,
+            padding: 20
           }
       ]
     }
