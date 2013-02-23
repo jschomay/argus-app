@@ -4,7 +4,24 @@ Ext.define('ArgusApp.store.Properties', {
 
     config: {
         autoLoad: true,
-        fields: ['State', 'City', 'Price'],
+        fields: [
+          'PropID', 
+          'State', 
+          'City', 
+          'Broker', 
+          'BrokerPhone', 
+          'BrokerCompany', 
+          'Price', 
+          'Contract', 
+          'Sold', 
+          'PriceText', 
+          'Units', 
+          'RentableSF', 
+          'New', 
+          'NewPrice', 
+          'BrokerEmail', 
+          'EmailSubj'
+        ],
 
         proxy: {
             type: 'jsonp',

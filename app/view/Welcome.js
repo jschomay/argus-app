@@ -33,22 +33,24 @@ Ext.define('ArgusApp.view.Welcome', {
               },
               listeners: {
                 initialize: function() {
-                  console.log("XXXXXXXXXXXXXXX initialized carousel component");
-                  Ext.getStore("Properties").load(function(properties) {
-                  var items = [];
-                  console.log('load store', arguments);
-                  Ext.each(properties, function(property) {
-                      console.log("property pushed", property);
-                      items.push({
-                        xtype: 'panel',
-                        data: property.data,
-                        tpl: 'Property: {State}, {City},{Price}'
-                      });
-                  });
-                  console.log("this:",this);
-                  this.setItems(items);
-                  this.setActiveItem(0);
-                  this.unmask();
+                  var store = Ext.getStore("Properties");
+                  store.load(function() {
+                    var items = [];
+                    store.clearFilter(true);
+                    store.filter('New', '-1' );
+                    console.log("store", store);
+                    // reach inside store to get filtered items instead of reloding it
+                    Ext.each(store.data.items, function(property) {
+                        items.push({
+                          xtype: 'panel',
+                          data: property.data,
+                          tpl: 'Property: {State}, {City},{Price}'
+                        });
+                    });
+                    store.clearFilter(true);
+                    this.setItems(items);
+                    this.setActiveItem(0);
+                    this.unmask();
                 }, this);
 
                 }
