@@ -37,7 +37,7 @@ Ext.define('ArgusApp.view.Welcome', {
                 store.load(function() {
                   var items = [];
                   store.clearFilter(true);
-                  store.filter('New', '-1' );
+                  store.filter('New', 'New' );
                   console.log("store", store);
                   // reach inside store to get filtered items instead of reloding it
                   Ext.each(store.data.items, function(property) {
@@ -45,10 +45,14 @@ Ext.define('ArgusApp.view.Welcome', {
                         xtype: 'panel',
                         data: property.data,
                         tpl: [
-                          '<div class="{New} {Contract} {NewPrice}">',
+                          '<div class="welcome property-listing {New} {Contract} {NewPrice}">',
                             '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
-                            '{State}, {City}',
-                            'Price: {Price}',
+                            '<div class="info">',
+                              '<h3>{State}, {City}</h3>',
+                              '<a href="#" target="_blank">Location/demographic</a><br>',
+                              '{Price} {PriceText}</br>',
+                              '{Units} / {RentableSF}',
+                            '</div>',
                           '</div>'
                         ].join('')
                       });
