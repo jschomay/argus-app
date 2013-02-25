@@ -43,18 +43,34 @@ Ext.define('ArgusApp.view.Welcome', {
                   Ext.each(store.data.items, function(property) {
                       items.push({
                         xtype: 'panel',
-                        data: property.data,
-                        tpl: [
-                          '<div class="welcome property-listing {New} {Contract} {NewPrice}">',
-                            '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
-                            '<div class="info">',
-                              '<h3>{State}, {City}</h3>',
-                              '<a href="#" target="_blank">Location/demographic</a><br>',
-                              '{Price} {PriceText}</br>',
-                              '{Units} / {RentableSF}',
-                            '</div>',
-                          '</div>'
-                        ].join('')
+                        items: [
+                          {
+                            data: property.data,
+                            tpl: [
+                              '<div class="welcome property-listing {New} {Contract} {NewPrice}">',
+                                '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
+                                '<div class="info">',
+                                  '<h3>{State}, {City}</h3>',
+                                  '<a href="#" target="_blank">Location/demographic</a><br>',
+                                  '{Price} {PriceText}</br>',
+                                  '{Units} / {RentableSF}',
+                                '</div>',
+                              '</div>'
+                            ].join('')
+                          },
+                          {
+                            xtype: 'button',
+                            action: 'showDetails',
+                            propertyData: property.data,
+                            text: "View property flyer",
+                            ui: "confirm",
+                            margin: 20,
+                            padding: 10,
+                            width: 400,
+                            right: 20,
+                            bottom: 60
+                          }
+                        ]
                       });
                   });
                   store.clearFilter(true);

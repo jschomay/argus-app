@@ -1,15 +1,10 @@
 Ext.define('ArgusApp.view.Contact', {
-    extend: 'Ext.form.Panel',
-    requires: [
-        'Ext.form.FieldSet',
-        'Ext.field.Email'
-    ],
+    extend: 'Ext.Container',
     xtype : 'contact',
 
     config: {
-        url: 'put-contact-here.php',
-        layout: 'vbox',
-
+        styleHtmlContent: true,
+        scrollable: true,
         items: [
             {
                 docked: 'top',
@@ -39,31 +34,9 @@ Ext.define('ArgusApp.view.Contact', {
                 '</div>'].join('')
             },
             {
-                xtype: 'fieldset',
-                instructions: '(email address is optional)',
-                items: [
-                    {
-                        xtype: 'textfield',
-                        label: 'Name'
-                    },
-                    {
-                        xtype: 'emailfield',
-                        label: 'Email'
-                    },
-                    {
-                        xtype: 'textareafield',
-                        label: 'Message'
-                    }
-                ]
-            },
-            {
-                xtype: 'button',
-                text: 'Send',
-                ui: 'confirm',
-                handler: function() {
-                    this.up('formpanel').submit();
-                    Ext.Msg.alert("Your message has been sent.");
-                }
+                xtype: 'contactForm',
+                to: 'jschomay@gmail.com'
+                // to: 'info@argus-realestate.com'
             }
         ]
     }

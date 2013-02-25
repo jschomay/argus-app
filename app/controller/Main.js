@@ -5,7 +5,8 @@ Ext.define('ArgusApp.controller.Main', {
         refs: {
             searchProperties: 'searchProperties',
             broker: 'broker',
-            main: 'main'
+            main: 'main',
+            welcome: 'welcome'
         },
         control: {
             'searchProperties list': {
@@ -19,6 +20,112 @@ Ext.define('ArgusApp.controller.Main', {
                 tap: function() {
                     console.log(this.getMain());
                     this.getMain().setActiveItem(1);
+                }
+            },
+            'button[action="showDetails"]': {
+                tap: function(button) {
+                    console.log("tap show details for property: ", button.propertyData);
+                    // Creating a Sheet Instance using Ext.Sheet Class constructor
+                    var propertyDetailsSheet = Ext.create("Ext.Sheet", {
+                        stretchX    : true,
+                        stretchY    : true,
+                        height      : '100%',
+                        items : [
+                            {
+                                xtype : 'toolbar',
+                                docked: 'top',
+                                title: button.propertyData.State+', '+button.propertyData.City+' details',
+                                items : [
+                                    {
+                                        xtype: 'spacer'
+                                    },
+                                    {
+                                        text    : 'Close',
+                                        handler : function () {
+                                            this.parent.parent.hide();
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                xtype   : 'panel',
+                                defaults: {
+                                    data : button.propertyData,
+                                    padding: 20
+                                },
+                                items: [
+                                    {
+                                        tpl   : 'Listing Broker: {Broker}'
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        padding: "5 10",
+                                        margin: '5 20',
+                                        width: 300,
+                                        style: "text-align: center;",
+                                        tpl: 'Call {BrokerPhone}',
+                                        callUrl: 'tel:'+button.propertyData.BrokerPhone,
+                                        ui: 'confirm',
+                                        handler: function(button, event){
+                                            window.location = button.callUrl;
+                                        }
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        padding: "5 10",
+                                        margin: '5 20',
+                                        width: 300,
+                                        style: "text-align: center;",
+                                        tpl: 'Send Email',
+                                        callUrl: 'tel:'+button.propertyData.BrokerPhone,
+                                        ui: 'confirm',
+                                        handler: function(emailButton, event){
+                                            // open message sheet
+                                            var emailBrokerSheet = Ext.create("Ext.Sheet", {
+                                                stretchX    : true,
+                                                stretchY    : true,
+                                                height      : '100%',
+                                                items : [
+                                                    {
+                                                        xtype : 'toolbar',
+                                                        docked: 'top',
+                                                        title: 'Email broker',
+                                                        items : [
+                                                            {
+                                                                xtype: 'spacer'
+                                                            },
+                                                            {
+                                                                text    : 'Close',
+                                                                handler : function () {
+                                                                    this.parent.parent.hide();
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        xtype: 'contactForm',
+                                                        styleHtmlContent: true,
+                                                        to: 'jschomay@gmail.com',
+                                                        // to: 'jschomay@gmail.com',
+                                                        subject: button.propertyData.EmailSubj
+                                                    }
+                                                ]
+                                            });
+                                            emailButton.parent.parent.add(emailBrokerSheet).show();
+                                        }
+                                    },
+                                    {
+                                        height: 600,
+                                        tpl   : ['<a href="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=1" target="_blank">Open in new window/Save PDF</a><br>',
+                                                '<iframe width="100%" height="90%" src="https://docs.google.com/viewer?url=http%3A%2F%2Fwww.argus-selfstorage.com%2Fshowdbimage%2Fshowproppdf.asp%3FPropID%3D{PropID}%26imagecode%3D1&embedded=true"></iframe>'
+                                                ].join('')
+
+                                    }
+                                ]
+                            }
+                        ]
+                    });
+                    this.getWelcome().add(propertyDetailsSheet).show();
                 }
             }
         }

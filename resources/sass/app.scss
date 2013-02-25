@@ -1,6 +1,8 @@
 $base-color: #31698A;
 $active-color: #aaa;
 
+$sheet-bg-color : white;
+
 @import 'sencha-touch/default/all';
 
 // You may remove any of the following modules that you
@@ -70,7 +72,7 @@ $active-color: #aaa;
   float: left;
   margin-right: 20px;
   margin-bottom: 20px;
-  border: 4px solid #555;
+  border: 2px solid #555;
   //width: 150px;
 }
 .welcome.property-listing h3 {

@@ -23,7 +23,9 @@ Ext.application({
         'SearchProperties',
         'Broker',
         'About',
-        'Contact'
+        'Contact',
+        'ContactForm',
+        'EmailBroker'
     ],
     stores: [
         'Properties'
