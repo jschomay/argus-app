@@ -24,8 +24,7 @@ Ext.application({
         'Broker',
         'About',
         'Contact',
-        'ContactForm',
-        'EmailBroker'
+        'ContactForm'
     ],
     stores: [
         'Properties'

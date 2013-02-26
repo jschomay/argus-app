@@ -35,8 +35,7 @@ Ext.define('ArgusApp.view.Contact', {
             },
             {
                 xtype: 'contactForm',
-                to: 'jschomay@gmail.com'
-                // to: 'info@argus-realestate.com'
+                to: 'info@argus-realestate.com'
             }
         ]
     }

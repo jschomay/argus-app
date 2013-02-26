@@ -2,7 +2,8 @@ Ext.define('ArgusApp.view.ContactForm', {
     extend: 'Ext.form.Panel',
     requires: [
         'Ext.form.FieldSet',
-        'Ext.field.Email'
+        'Ext.field.Email',
+        'Ext.field.Hidden'
     ],
     xtype : 'contactForm',
 
@@ -65,12 +66,13 @@ Ext.define('ArgusApp.view.ContactForm', {
                         to: form.getTo(),
                         subject: form.getSubject()
                     });
+                    console.log("form data", form.getValues());
                     form.submit({
-                        url: "xxx",
-                        // url: "http://www.argus-selfstorage.com.php53-11.dfw1-2.websitetestlink.com/mobile/rest-apis.php?",
+                        url: "http://www.argus-selfstorage.com.php53-11.dfw1-2.websitetestlink.com/mobile/rest-apis.php",
                         method: 'POST',
                         success: function() {
-                            alert('form submitted successfully!');
+                            Ext.Msg.alert('Success', 'Your message has been sent.', Ext.emptyFn);
+
                         }
                     });
                 }

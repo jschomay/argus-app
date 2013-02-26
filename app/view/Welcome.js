@@ -61,7 +61,7 @@ Ext.define('ArgusApp.view.Welcome', {
                           {
                             xtype: 'button',
                             action: 'showDetails',
-                            propertyData: property.data,
+                            id: property.data.PropID,
                             text: "View property flyer",
                             ui: "confirm",
                             margin: 20,

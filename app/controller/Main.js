@@ -24,7 +24,12 @@ Ext.define('ArgusApp.controller.Main', {
             },
             'button[action="showDetails"]': {
                 tap: function(button) {
-                    console.log("tap show details for property: ", button.propertyData);
+                    console.log("tap show details for property: ", button.id);
+                    var store = Ext.getStore('Properties');
+                    var record = store.findRecord('PropID', button.id);
+                    var propertyData = record.data;
+                    console.log('store', store, record, propertyData);
+
                     // Creating a Sheet Instance using Ext.Sheet Class constructor
                     var propertyDetailsSheet = Ext.create("Ext.Sheet", {
                         stretchX    : true,
@@ -34,7 +39,7 @@ Ext.define('ArgusApp.controller.Main', {
                             {
                                 xtype : 'toolbar',
                                 docked: 'top',
-                                title: button.propertyData.State+', '+button.propertyData.City+' details',
+                                title: propertyData.State+', '+propertyData.City+' details',
                                 items : [
                                     {
                                         xtype: 'spacer'
@@ -50,7 +55,7 @@ Ext.define('ArgusApp.controller.Main', {
                             {
                                 xtype   : 'panel',
                                 defaults: {
-                                    data : button.propertyData,
+                                    data : propertyData,
                                     padding: 20
                                 },
                                 items: [
@@ -64,7 +69,7 @@ Ext.define('ArgusApp.controller.Main', {
                                         width: 300,
                                         style: "text-align: center;",
                                         tpl: 'Call {BrokerPhone}',
-                                        callUrl: 'tel:'+button.propertyData.BrokerPhone,
+                                        callUrl: 'tel:'+propertyData.BrokerPhone,
                                         ui: 'confirm',
                                         handler: function(button, event){
                                             window.location = button.callUrl;
@@ -77,7 +82,7 @@ Ext.define('ArgusApp.controller.Main', {
                                         width: 300,
                                         style: "text-align: center;",
                                         tpl: 'Send Email',
-                                        callUrl: 'tel:'+button.propertyData.BrokerPhone,
+                                        callUrl: 'tel:'+propertyData.BrokerPhone,
                                         ui: 'confirm',
                                         handler: function(emailButton, event){
                                             // open message sheet
@@ -105,9 +110,8 @@ Ext.define('ArgusApp.controller.Main', {
                                                     {
                                                         xtype: 'contactForm',
                                                         styleHtmlContent: true,
-                                                        to: 'jschomay@gmail.com',
-                                                        // to: 'jschomay@gmail.com',
-                                                        subject: button.propertyData.EmailSubj
+                                                        to: propertyData.BrokerEmail,
+                                                        subject: propertyData.EmailSubj
                                                     }
                                                 ]
                                             });
