@@ -29,35 +29,43 @@ Ext.define('ArgusApp.controller.Main', {
                     var record = store.findRecord('PropID', button.id);
                     var propertyData = record.data;
 
-                    this.getWelcome().add(Ext.create("ArgusApp.view.PropertyDetail", {propertyData: propertyData})).show();
+                    var propertyDetailSheet = Ext.create("Ext.Sheet", {
+                        stretchX    : true,
+                        stretchY    : true,
+                        height: '100%',
+                        layout: 'fit'
+                    });
+                    propertyDetailSheet.add({
+                        xtype : 'toolbar',
+                        docked: 'top',
+                        title: propertyData.State+', '+propertyData.City+' details',
+                        items : [
+                            {
+                                xtype: 'spacer'
+                            },
+                            {
+                                text    : 'Close',
+                                handler : function () {
+                                    var sheet = this.parent.parent;
+                                    sheet.hide();
+                                    sheet.getHideAnimation().on({
+                                        animationend: sheet.destroy,
+                                        scope: sheet
+                                    });
+                                }
+                            }
+                        ]
+                    });
+                    propertyDetailSheet.add(Ext.create("ArgusApp.view.PropertyDetail", {propertyData: propertyData}));
+                    this.getWelcome().add(propertyDetailSheet);
+                    propertyDetailSheet.show();
                 }
             }
         }
     },
 
     showPropertyDetail: function(list, record) {
-        console.log('disclose event from main.controller', arguments);
-        this.getSearchProperties().push({
-            xtype: 'panel',
-            //title: record.data.title,
-            title: 'Sample Property',
-            //html: record.data.content,
-            html: ['<div class="listing">',
-                        '<div class="scroll-image"><img style="float: left;display: block;margin-right: 20px;" src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID=677&amp;imagecode=5" alt="" border="0"></div>',
-                        '<div class="scroll-content">',
-                            '<h3> <a href="#" class="specials">Bandon, OR</a></h3>',
-                            '<div class="scroll-content-section">',
-                                '<p> $749,000</p>',
-                                '<p> <a href="#" class="specials">View Property Detail</a> </p>',
-                            '</div>',
-                            '<div class="scroll-content-section"><p>19,268 rsf</p>',
-                                '<p> 141 units </p>',
-                            '</div>',
-                        '</div>',
-                        '<div class="clear"></div>',
-                    '</div>'].join(""),
-            scrollable: true
-        });
+        this.getSearchProperties().push(Ext.create("ArgusApp.view.PropertyDetail", {title: record.data.State+', '+record.data.City+' details', propertyData: record.data}));
     },
     showBrokerDetail: function(list, record) {
         console.log('show broker detail from main.controller', arguments);

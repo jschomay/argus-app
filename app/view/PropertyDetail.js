@@ -1,38 +1,15 @@
 Ext.define("ArgusApp.view.PropertyDetail", {
-    extend: 'Ext.Sheet',
+    extend: 'Ext.Container',
     xtype: "propertyDetail",
     config: {
-        stretchX    : true,
-        stretchY    : true,
-        height      : '100%'
     },
     constructor: function(config) {
-        console.log("config", config);
         propertyData = config.propertyData;
         config.items = [
             {
-                xtype : 'toolbar',
-                docked: 'top',
-                title: propertyData.State+', '+propertyData.City+' details',
-                items : [
-                    {
-                        xtype: 'spacer'
-                    },
-                    {
-                        text    : 'Close',
-                        handler : function () {
-                            var sheet = this.parent.parent;
-                            sheet.hide();
-                            sheet.getHideAnimation().on({
-                                animationend: sheet.destroy,
-                                scope: sheet
-                            });
-                        }
-                    }
-                ]
-            },
-            {
                 xtype   : 'panel',
+                scrollable: true,
+                height: '100%',
                 defaults: {
                     data : propertyData,
                     padding: 20
