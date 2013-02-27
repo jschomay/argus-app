@@ -21,6 +21,7 @@ Ext.application({
         'Main',
         'Welcome',
         'SearchProperties',
+        'PropertyDetail',
         'Broker',
         'About',
         'Contact',
