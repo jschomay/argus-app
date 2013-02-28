@@ -7,13 +7,14 @@ Ext.define('ArgusApp.view.Welcome', {
     config: {
       styleHtmlContent: true,
       scrollable: true,
+      layout: 'vbox',
 
       items: [
-          {
-              docked: 'top',
-              xtype: 'titlebar',
-              title: "Welcome to Argus Self Storage"
-          },
+          // {
+          //     docked: 'top',
+          //     xtype: 'titlebar',
+          //     title: "Welcome to Argus Self Storage"
+          // },
           {
               html: [
                   '<img style="display:block; margin:auto;" src="resources/images/logo.png">',
@@ -51,7 +52,6 @@ Ext.define('ArgusApp.view.Welcome', {
                                 '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
                                 '<div class="info">',
                                   '<h3>{State}, {City}</h3>',
-                                  '<a href="#" target="_blank">Location/demographic</a><br>',
                                   '{Price} {PriceText}</br>',
                                   '{Units} / {RentableSF}',
                                 '</div>',

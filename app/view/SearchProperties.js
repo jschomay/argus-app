@@ -18,8 +18,7 @@ Ext.define('ArgusApp.view.SearchProperties', {
                             '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
                             '<div class="info">',
                               '<h3>{State}, {City}</h3>',
-                              '<a href="#" target="_blank">Location/demographic</a><br>',
-                              '{Price} {PriceText}</br>',
+                              '{Price} {PriceText}<br>',
                               '{Units} / {RentableSF}',
                             '</div>',
                           '</div>'

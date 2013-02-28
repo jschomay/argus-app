@@ -7,6 +7,7 @@ Ext.define('ArgusApp.model.Property', {
             'PropID', 
             'State', 
             'City', 
+            'ZipCode',
             'Broker', 
             'BrokerPhone', 
             'BrokerCompany', 

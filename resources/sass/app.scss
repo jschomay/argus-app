@@ -40,33 +40,33 @@ $sheet-bg-color : white;
   content: "New";
   display: block;
   position: absolute;
-  top: 10px;
-  right: 80px;
+  bottom: 5px;
+  right: 5px;
   background: yellow;
-  padding: 3px 10px;
-  font-weight: bold;
+  padding: 3px 5px;
+  font-size: small;
 }
 .welcome.property-listing.new-price:before {
   content: "New Price";
   display: block;
   position: absolute;
-  top: 10px;
-  right: 80px;
+  bottom: 5px;
+  right: 5px;
   background: #eee;
   color: blue;
-  padding: 3px 10px;
-  font-weight: bold;
+  padding: 3px 5px;
+  font-size: small;
 }
 .welcome.property-listing.under-contract:before {
   content: "Under contract";
   display: block;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 5px;
+  right: 5px;
   background: #eee;
   color: red;
-  padding: 3px 10px;
-  font-weight: bold;
+  padding: 3px 5px;
+  font-size: small;
 }
 .welcome.property-listing img {
   float: left;
@@ -84,8 +84,8 @@ $sheet-bg-color : white;
 .welcome.property-listing .sold {
   background: green;
   color: white;
-  padding: 3px 10px;
-  font-size: 15px;
+  padding: 3px 5px;
+  font-size: small;
 }
 
 
