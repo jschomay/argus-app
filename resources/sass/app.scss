@@ -36,7 +36,7 @@ $sheet-bg-color : white;
 
 // listings
 
-.welcome.property-listing.new:before {
+.properties.new:before {
   content: "New";
   display: block;
   position: absolute;
@@ -46,7 +46,10 @@ $sheet-bg-color : white;
   padding: 3px 5px;
   font-size: small;
 }
-.welcome.property-listing.new-price:before {
+.featured.properties.new:before {
+  display:none;
+}
+.properties.new-price:before {
   content: "New Price";
   display: block;
   position: absolute;
@@ -57,7 +60,7 @@ $sheet-bg-color : white;
   padding: 3px 5px;
   font-size: small;
 }
-.welcome.property-listing.under-contract:before {
+.properties.under-contract:before {
   content: "Under contract";
   display: block;
   position: absolute;
@@ -68,20 +71,20 @@ $sheet-bg-color : white;
   padding: 3px 5px;
   font-size: small;
 }
-.welcome.property-listing img {
+.properties img {
   float: left;
   margin-right: 20px;
   margin-bottom: 20px;
   border: 2px solid #555;
   //width: 150px;
 }
-.welcome.property-listing h3 {
+.properties h3 {
   margin-bottom: 0px;
 }
-.welcome.property-listing .info {
+.properties .info {
   margin-left:  130px;
 }
-.welcome.property-listing .sold {
+.properties .sold {
   background: green;
   color: white;
   padding: 3px 5px;

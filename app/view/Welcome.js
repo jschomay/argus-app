@@ -8,6 +8,7 @@ Ext.define('ArgusApp.view.Welcome', {
       styleHtmlContent: true,
       scrollable: true,
       layout: 'vbox',
+      style: "background-image: url(resources/images/index_container_bg.jpg);",
 
       items: [
           // {
@@ -18,15 +19,15 @@ Ext.define('ArgusApp.view.Welcome', {
           {
               html: [
                   '<img style="display:block; margin:auto;" src="resources/images/logo.png">',
-                  '<h2 style="text-align:center; line-height:100%;">America\'s Premier Self Storage Brokerage Firm.</h2>',
-                  '<h3 style="text-align:center; line-height:100%;">Our newest listings:</h3>'
+                  '<h3 style="text-align:center; padding: 0px;margin-bottom: 10px;">America\'s Premier Self Storage Brokerage Firm.</h3>',
+                  '<b style="text-align:center; padding: 5px;background: #183243;color: #EEE;display: block;text-transform: uppercase;">Our newest listings:</b>'
                   ].join("")
           },
           {
             xtype: 'rotatingcarousel',
             styleHtmlContent: true,
             delay: 5000,
-            height: 300,
+            height: 170,
             style: 'background: #fff;padding: 10px;border: 1px solid #aaa;',
             masked: {
                 xtype: 'loadmask',
@@ -48,7 +49,7 @@ Ext.define('ArgusApp.view.Welcome', {
                           {
                             data: property.data,
                             tpl: [
-                              '<div class="welcome property-listing {New} {Contract} {NewPrice}">',
+                              '<div class="featured properties {New} {Contract} {NewPrice}">',
                                 '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
                                 '<div class="info">',
                                   '<h3>{State}, {City}</h3>',
@@ -64,11 +65,9 @@ Ext.define('ArgusApp.view.Welcome', {
                             id: property.data.PropID,
                             text: "View property flyer",
                             ui: "confirm",
-                            margin: 20,
                             padding: 10,
-                            width: 400,
-                            right: 20,
-                            bottom: 60
+                            width: '90%',
+                            bottom: 35
                           }
                         ]
                       });
@@ -84,7 +83,7 @@ Ext.define('ArgusApp.view.Welcome', {
           {
             xtype: 'button',
             id: 'showListings',
-            text: "See all listings...",
+            text: "View all our listings",
             margin: 20,
             padding: 20
           }
