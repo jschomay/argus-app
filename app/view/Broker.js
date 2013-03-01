@@ -11,10 +11,12 @@ Ext.define('ArgusApp.view.Broker', {
                 xtype: 'container',
                 title: "Find an Argus Broker",
                 scrollable: true,
+                styleHtmlContent: true,
                 items: [
                     {
-                        html: ['<br><br><img style="display:block; margin:auto;width: 100%;" src="resources/images/regions.png">',
-                        '<br><p>Argus Broker Affiliates cover nearly 45 markets across the U.S. Please select your region below to view contact and professional information about the Broker Affiliates near you.</p>',
+                        html: ['<b>Select a region:</b>',
+                        '<br><img style="display:block; margin:auto;width: 100%;" src="resources/images/regions.png">',
+                        '<br><p>Argus Broker Affiliates cover nearly 45 markets across the U.S. Please select your region above to view contact and professional information about the Broker Affiliates near you.</p>',
                         '<br><br>'].join("")
                     },
                     {
@@ -23,11 +25,11 @@ Ext.define('ArgusApp.view.Broker', {
                         onItemDisclosure: true,
                         itemTpl: '{title}',
                         data: [
-                            { title: '1. Northeast Region' },
-                            { title: '2. Southeast Region' },
-                            { title: '3. North Central Region' },
-                            { title: '4. South Central Region' },
-                            { title: '5. West Region' }
+                            { title: 'Northeast Region', region: 'northeast' },
+                            { title: 'Southeast Region', region: 'southeast' },
+                            { title: 'North Central Region', region: 'northcentral' },
+                            { title: 'South Central Region', region: 'southcentral' },
+                            { title: 'West Region', region: 'west' }
                         ]
                     }
                 ]

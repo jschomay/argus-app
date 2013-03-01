@@ -23,10 +23,7 @@ Ext.define('ArgusApp.view.SearchProperties', {
                             '</div>',
                           '</div>'
                         ].join(''),
-                onItemDisclosure: true,
-                select: function(view, record) {
-                    console.log("select", arguments);
-                }
+                onItemDisclosure: true
             }
         ]
     }

@@ -3,7 +3,8 @@ Ext.define("ArgusApp.view.PropertyDetail", {
     xtype: "propertyDetail",
     config: {
         scrollable: true,
-        layout: 'vbox'
+        layout: 'vbox',
+        style: "background: white;"
     },
     constructor: function(config) {
         propertyData = config.propertyData;

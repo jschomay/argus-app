@@ -74,7 +74,6 @@ $sheet-bg-color : white;
 .properties img {
   float: left;
   margin-right: 20px;
-  margin-bottom: 20px;
   border: 2px solid #555;
   //width: 150px;
 }
@@ -92,7 +91,34 @@ $sheet-bg-color : white;
 }
 
 
+// broker info
+
+#broker-territories {
+  display: none;
+}
+
+#broker-territories li {
+  float: left;
+  margin: 5px;
+  display: block;
+  background: #ccc;
+  padding: 3px;
+}
+
+#broker-territories ol {
+  padding: 0;
+  margin: 0;
+}
 
 
+.brokers .broker-box {
+  clear: both;
+  padding: 10px 0px;
+  border-bottom: 1px solid #CCC;
+}
 
-
+.brokers img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
