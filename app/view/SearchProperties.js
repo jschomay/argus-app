@@ -21,6 +21,7 @@ Ext.define('ArgusApp.view.SearchProperties', {
                               '{Price} {PriceText}<br>',
                               '{Units} / {RentableSF}',
                             '</div>',
+                            '<div style="clear:both"></div>',
                           '</div>'
                         ].join(''),
                 onItemDisclosure: true

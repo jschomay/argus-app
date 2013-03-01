@@ -5,13 +5,12 @@ Ext.define('ArgusApp.view.Broker', {
         'Ext.Container'
     ],
     config: {
-        scrollable: true,
         items: [
             {
                 xtype: 'container',
                 title: "Find an Argus Broker",
                 styleHtmlContent: true,
-                layout: 'vbox',
+                scrollable: true,
                 items: [
                     {
                         html: '<b>Select a region:</b>'
@@ -78,19 +77,6 @@ Ext.define('ArgusApp.view.Broker', {
                     },
                     {
                         html: '<p>Argus Broker Affiliates cover nearly 45 markets across the U.S. Please select your region above to view contact and professional information about the Broker Affiliates near you.</p>'
-                    },
-                    {
-                        xtype: 'list',
-                        height: 300,
-                        onItemDisclosure: true,
-                        itemTpl: '{title}',
-                        data: [
-                            { title: 'Northeast Region', region: 'northeast' },
-                            { title: 'Southeast Region', region: 'southeast' },
-                            { title: 'North Central Region', region: 'northcentral' },
-                            { title: 'South Central Region', region: 'southcentral' },
-                            { title: 'West Region', region: 'west' }
-                        ]
                     }
                 ]
             }

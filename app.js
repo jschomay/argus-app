@@ -9,7 +9,7 @@ Ext.application({
     name: 'ArgusApp',
 
     viewport: {
-        autoMaximize: false
+        // autoMaximize: true
     },
 
     requires: [

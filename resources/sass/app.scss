@@ -1,6 +1,7 @@
 $base-color: #31698A;
 $active-color: #aaa;
 
+
 $sheet-bg-color : white;
 
 @import 'sencha-touch/default/all';
@@ -33,6 +34,9 @@ $sheet-bg-color : white;
 @include pictos-iconmask(help);
 @include pictos-iconmask(phone1);
 
+.x-msgbox-text {
+  color: #CCC !important;
+}
 
 // listings
 
