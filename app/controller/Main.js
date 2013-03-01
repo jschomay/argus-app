@@ -13,9 +13,8 @@ Ext.define('ArgusApp.controller.Main', {
                 disclose: 'showPropertyDetail',
                 select: 'showPropertyDetail'
             },
-            'broker list':{
-                select: 'showBrokerDetail',
-                disclose: 'showBrokerDetail'
+            'broker':{
+                showDetail: 'showBrokerDetail'
             },
             'button#showListings': {
                 tap: function() {
@@ -66,9 +65,9 @@ Ext.define('ArgusApp.controller.Main', {
     showPropertyDetail: function(list, record) {
         this.getSearchProperties().push(Ext.create("ArgusApp.view.PropertyDetail", {title: record.data.State+', '+record.data.City+' details', propertyData: record.data}));
     },
-    showBrokerDetail: function(list, record) {
+    showBrokerDetail: function(data) {
         var brokerInfo = Ext.create("Ext.Container", {
-            title: record.data.title,
+            title: data.title,
             html: "",
             baseCls: 'brokers',
             styleHtmlContent: true,
@@ -79,7 +78,7 @@ Ext.define('ArgusApp.controller.Main', {
             }
         });
         Ext.Ajax.request({
-            url: 'http://www.argus-selfstorage.com.php53-11.dfw1-2.websitetestlink.com/mobile/rest-apis.php?action=brokerinfo&region='+record.data.region,
+            url: 'http://www.argus-selfstorage.com.php53-11.dfw1-2.websitetestlink.com/mobile/rest-apis.php?action=brokerinfo&region='+data.region,
             callback: function(ajax,bool,response) {
                 brokerInfo.setHtml(response.responseText);
                 brokerInfo.unmask();
