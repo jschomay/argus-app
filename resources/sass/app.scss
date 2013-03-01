@@ -92,19 +92,13 @@ $sheet-bg-color : white;
 
 
 // broker
-.map-region .x-innerhtml {
-  top: 40%;
-  position: absolute;
-  text-align: center;
-}
-
 .map-region .x-innerhtml .lable{
   text-align: center;
   background: white;
-  padding: 3px;
+  padding: 6%;
   border: 1px solid black;
   font-size: small;
-  display: inline-block;
+  position: absolute;
 }
 
 // broker info

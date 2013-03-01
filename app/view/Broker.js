@@ -14,7 +14,7 @@ Ext.define('ArgusApp.view.Broker', {
                 layout: 'vbox',
                 items: [
                     {
-                        html: '<b>Select a region:</b><br>'
+                        html: '<b>Select a region:</b>'
                     },
                     {
                         id: "selectable-map-regions",
@@ -35,45 +35,40 @@ Ext.define('ArgusApp.view.Broker', {
                         },
                         items: [
                             {
-                                html: '<div class="lable">West</div>',
+                                // html: '<div style="top: 45%; left: 44%;" class="lable">West</div>',
                                 data: { title: 'West Region', region: 'west' },
-                                style: "background:blue; border: 1px solid black; opacity: .4;",
                                 top: '0%',
                                 left: '0%',
                                 height: '63%',
                                 width: '38%'
                             },
                             {
-                                html: '<div class="lable">North Central</div>',
+                                // html: '<div style="top: 45%; left: 21%;" class="lable">North Central</div>',
                                 data: { title: 'North Central Region', region: 'northcentral' },
-                                style: "background:red; border: 1px solid black; opacity: .4;",
                                 top: '6%',
                                 left: '38%',
                                 height: '41%',
                                 width: '38%'
                             },
                             {
-                                html: '<div class="lable">South Central</div>',
+                                // html: '<div style="top: 14%; left: 19%;" class="lable">South Central</div>',
                                 data: { title: 'South Central Region', region: 'southcentral' },
-                                style: "background:green; border: 1px solid black; opacity: .4;",
                                 top: '47%',
                                 left: '38%',
                                 height: '38%',
                                 width: '35%'
                             },
                             {
-                                html: '<div class="lable">Northeast</div>',
-                                data: { title: 'Northeast Region', region: 'northeast' },
-                                style: "background:yellow; border: 1px solid black; opacity: .4;",
+                                // html: '<div style="top: 16%; left: 17%;" class="lable">Southeast</div>',
+                                data: { title: 'Southeast Region', region: 'Southeast' },
                                 top: '34%',
                                 left: '73%',
                                 height: '50%',
                                 width: '20%'
                             },
                             {
-                                html: '<div class="lable">Northeast</div>',
+                                // html: '<div style="top: 52%; left: 15%;" class="lable">Northeast</div>',
                                 data: { title: 'Northeast Region', region: 'northeast' },
-                                style: "background:purple; border: 1px solid black; opacity: .4;",
                                 top: '0%',
                                 left: '76%',
                                 height: '34%',
@@ -82,7 +77,7 @@ Ext.define('ArgusApp.view.Broker', {
                         ]
                     },
                     {
-                        html: '<br><p>Argus Broker Affiliates cover nearly 45 markets across the U.S. Please select your region above to view contact and professional information about the Broker Affiliates near you.</p>'
+                        html: '<p>Argus Broker Affiliates cover nearly 45 markets across the U.S. Please select your region above to view contact and professional information about the Broker Affiliates near you.</p>'
                     },
                     {
                         xtype: 'list',
