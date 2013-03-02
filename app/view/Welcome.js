@@ -36,9 +36,10 @@ Ext.define('ArgusApp.view.Welcome', {
             listeners: {
               initialize: function() {
                 var store = Ext.getStore("Properties");
+                store.clearFilter();
                 store.load(function() {
                   var items = [];
-                  store.clearFilter(true);
+                  store.clearFilter();
                   store.filter('New', 'New' );
                   console.log("store", store);
                   // reach inside store to get filtered items instead of reloding it
@@ -72,7 +73,7 @@ Ext.define('ArgusApp.view.Welcome', {
                         ]
                       });
                   });
-                  store.clearFilter(true);
+                  store.clearFilter();
                   this.setItems(items);
                   this.setActiveItem(0);
                   this.unmask();
