@@ -25,7 +25,7 @@ Ext.define("ArgusApp.view.PropertyDetail", {
                 callUrl: 'tel:'+propertyData.BrokerPhone,
                 ui: 'confirm',
                 handler: function(button, event){
-                    window.location = button.callUrl;
+                    window.location = button.config.callUrl;
                 }
             },
             {

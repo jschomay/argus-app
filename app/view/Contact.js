@@ -17,7 +17,7 @@ Ext.define('ArgusApp.view.Contact', {
                 callUrl: 'tel:1-800-55-STORE',
                 ui: 'confirm',
                 handler: function(button, event){
-                    window.location = button.callUrl;
+                    window.location = button.config.callUrl;
                 }
             },
             {
