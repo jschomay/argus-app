@@ -3,3 +3,5 @@ touch/
 *.DS_Store
 build/
 archive/
+node_modules/
+resources/sass/.sass-cache/

@@ -19,7 +19,7 @@ Ext.define('ArgusApp.view.Welcome', {
           {
               html: [
                   '<img style="display:block; margin:auto;" src="resources/images/logo.png">',
-                  '<h3 style="text-align:center; padding: 0px;margin-bottom: 10px;">America\'s Premier Self Storage Brokerage Firm.</h3>',
+                  '<h3 style="text-align:center; padding: 0px;margin-bottom: 10px;">America\'s Premier Self Storage Brokerage Firm</h3>',
                   '<b style="text-align:center; padding: 5px;background: #183243;color: #EEE;display: block;text-transform: uppercase;">Our newest listings:</b>'
                   ].join("")
           },

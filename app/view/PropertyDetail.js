@@ -78,7 +78,7 @@ Ext.define("ArgusApp.view.PropertyDetail", {
             },
             {
                 height: 500,
-                tpl   : ['<a href="http://zipwho.com/?zip={ZipCode}&city=&filters=--_--_--_--&state=&mode=zip" target="_blank">Location/demographic</a><br><br>',
+                tpl   : ['<a href="https://maps.google.com/maps?q={ZipCode}" target="_blank">Location</a> | <a href="http://zipwho.com/?zip={ZipCode}&city=&filters=--_--_--_--&state=&mode=zip" target="_blank">Demographic</a><br><br>',
                         '<a href="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=1" target="_blank">Open in new window/Save PDF</a><br><br>',
                         '<iframe width="100%" height="90%" src="https://docs.google.com/viewer?url=http%3A%2F%2Fwww.argus-selfstorage.com%2Fshowdbimage%2Fshowproppdf.asp%3FPropID%3D{PropID}%26imagecode%3D1&embedded=true"></iframe>'
                         ].join('')

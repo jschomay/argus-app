@@ -24,7 +24,7 @@ Ext.define('ArgusApp.view.ContactForm', {
                     {
                         xtype: 'textfield',
                         name: 'phone',
-                        label: 'Phone Number'
+                        label: 'Phone'
                     },
                     {
                         xtype: 'emailfield',
@@ -68,7 +68,7 @@ Ext.define('ArgusApp.view.ContactForm', {
                     });
                     console.log("form data", form.getValues());
                     form.submit({
-                        url: "http://www.argus-selfstorage.com.php53-11.dfw1-2.websitetestlink.com/mobile/rest-apis.php",
+                        url: "http://m.argus-selfstorage.com/proxy.php",
                         method: 'POST',
                         success: function() {
                             Ext.Msg.alert('Success', 'Your message has been sent.', Ext.emptyFn);

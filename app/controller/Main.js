@@ -84,7 +84,7 @@ Ext.define('ArgusApp.controller.Main', {
             }
         });
         Ext.Ajax.request({
-            url: 'http://www.argus-selfstorage.com.php53-11.dfw1-2.websitetestlink.com/mobile/rest-apis.php?action=brokerinfo&region='+data.region,
+            url: 'http://m.argus-selfstorage.com/proxy.php?action=brokerinfo&region='+data.region,
             callback: function(ajax,bool,response) {
                 brokerInfo.setHtml(response.responseText);
                 brokerInfo.unmask();

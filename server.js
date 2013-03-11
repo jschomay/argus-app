@@ -1,9 +1,8 @@
-var connect = require('express');
-console.log("Express server listening on port 8888");
-connect.createServer(
-    connect.static(__dirname)
-).listen(8888);
 
-livereload = require('livereload');
-server = livereload.createServer();
-server.watch(__dirname);
+var express = require('express'),
+ app = express();
+
+app.use(express.static(__dirname));
+
+app.listen(8888);
+console.log('listening on 8888');
