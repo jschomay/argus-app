@@ -5,6 +5,7 @@ Ext.define('ArgusApp.model.Property', {
     config: {
         fields: [
             'PropID', 
+            'Address', 
             'State', 
             'City', 
             'ZipCode',
@@ -13,6 +14,9 @@ Ext.define('ArgusApp.model.Property', {
             'BrokerCompany', 
             'Units', 
             'RentableSF', 
+            'PDFFile', 
+            'PropThumb', 
+            'PropImage', 
             'BrokerEmail', 
             'EmailSubj',
             'Sold',

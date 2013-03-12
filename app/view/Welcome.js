@@ -51,7 +51,7 @@ Ext.define('ArgusApp.view.Welcome', {
                             data: property.data,
                             tpl: [
                               '<div class="featured properties {New} {Contract} {NewPrice}">',
-                                '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
+                                '<img src="http://www.argus-selfstorage.com/property_images/{PropThumb}">',
                                 '<div class="info">',
                                   '<h3>{State}, {City}</h3>',
                                   '{Price} {PriceText}</br>',

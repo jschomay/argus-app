@@ -103,7 +103,7 @@ Ext.define('ArgusApp.view.SearchProperties', {
                         store: 'Properties',
                         itemHeight: 100,
                         itemTpl: ['<div class="listings properties {New} {Contract} {NewPrice}">',
-                                    '<img src="http://www.argus-selfstorage.com/showdbimage/showproppdf.asp?PropID={PropID}&imagecode=5">',
+                                    '<img src="http://www.argus-selfstorage.com/property_images/{PropThumb}">',
                                     '<div class="info">',
                                       '<h3>{State}, {City}</h3>',
                                       '{Price} {PriceText}<br>',
