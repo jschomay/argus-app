@@ -32,7 +32,7 @@ Ext.define('ArgusApp.model.Property', {
                 name: 'Price',
                 type: 'string',
                 convert: function(value, record) {
-                    if (record.get('Sold') === '-1')
+                    if (record.get('Sold') !== '0')
                         return '<span class="sold">SOLD</span>';
                     if (value === "0")
                         return '';
@@ -49,7 +49,7 @@ Ext.define('ArgusApp.model.Property', {
                 name: "Contract",
                 type: 'string',
                 convert: function (value, record) {
-                    if (value === "-1")
+                    if (value === "1")
                         return "under-contract";
                     else 
                         return '';
@@ -59,7 +59,7 @@ Ext.define('ArgusApp.model.Property', {
                 name: "New",
                 type: 'string',
                 convert: function (value, record) {
-                    if (value === "-1")
+                    if (value === "1")
                         return "new";
                     else 
                         return '';
@@ -69,7 +69,7 @@ Ext.define('ArgusApp.model.Property', {
                 name: "NewPrice",
                 type: 'string',
                 convert: function (value, record) {
-                    if (value === "-1")
+                    if (value === "1")
                         return "new-price";
                     else 
                         return '';
