@@ -102,7 +102,7 @@ Ext.define('ArgusApp.controller.Main', {
                 stateFilter = {key:"State", value: filters[i].getValue()};
             }
             if (filters[i].getName() === "priceSelect"){
-                priceFilter = {Key:"Price", value: filters[i].getValue()};
+                priceFilter = {key:"Price", value: filters[i].getValue()};
             }
         }
         console.log("FILTERS",stateFilter, priceFilter);
@@ -111,16 +111,20 @@ Ext.define('ArgusApp.controller.Main', {
         store.clearFilter();
 
         // filter by price range
+        console.log("filtering:", priceFilter.key, priceFilter.value);
         store.filterBy(function(record) {
             var price, lower, upper;
-            price = Number(record.data.Price.slice(1).replace(',',''));
+            price = Number(record.data.Price.replace('$','').split(',').join(''));
+            // price will be NaN for sold properties (<span>SOLD</span>), so set those to 0
+            if (isNaN(price))
+                price = 0;
             switch (priceFilter.value) {
                 case "":
-                    lower = 0;
+                    lower = -1;
                     upper = 9999999;
                     break;
                 case "1":
-                    lower = 0;
+                    lower = -1;
                     upper = 500000;
                     break;
                 case "2":
@@ -138,18 +142,18 @@ Ext.define('ArgusApp.controller.Main', {
             }
             if (lower < price && price < upper)
             {
-                console.log("price match", record);
                 return true;
             }
             else
                 return false;
         });
+        console.log("Count after price filter",store.data.length);
 
         // filter by state name
         console.log("filtering:", stateFilter.key, stateFilter.value);
         store.filter(stateFilter.key, stateFilter.value);
 
-        console.log("store count", store.data.length, store);
+        console.log("Count after price and state filter",store.data.length);
         if (store.data.length === 0) {
             Ext.Msg.alert("No properties found.");
         }
